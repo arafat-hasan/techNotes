@@ -3,6 +3,14 @@
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
 
+:sectnums:
+:toc:
+:toclevels: 2
+:doctype: book
+
+include::chapters/redis.adoc[]
+
+
 ifdef::env-github[]
 ++++
 <p align="center">
@@ -28,8 +36,6 @@ endif::[]
 
 ===============================================================================
 
-
-:toc:
 
 
 == Introduction to Redis
