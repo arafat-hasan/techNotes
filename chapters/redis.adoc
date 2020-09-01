@@ -6,7 +6,7 @@
 ifdef::env-github[]
 ++++
 <p align="center">
-<img align="center", width="600", height="400", alt="Redis Logo" src="90Hyfrg.png>
+<img align="center", width="600", height="400", alt="Redis Logo" src="90Hyfrg.png">
 </p>
 ++++
 endif::[]
