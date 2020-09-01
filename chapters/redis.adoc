@@ -208,7 +208,7 @@ Locate and uncomment the `requirepass` parameter and specify a strong password.
 
 
 -------------------------------------------------------------------------------
-================================== SECURITY ==================================#
+================================== SECURITY ===================================
 
 # Require clients to issue AUTH <PASSWORD> before processing any other
 # commands.  This might be useful in environments in which you do not trust
@@ -505,7 +505,7 @@ NOTE: https://redis.io/topics/data-types[Redis Datatypes]
 - Bitmaps and HyperLogLogs
 
 
-==# Lists
+=== Lists
 
 ==== LPUSH
 Insert all the specified values at the head of the list stored at key. If key does not exist, it is created as empty list before performing the push operations.
@@ -585,7 +585,7 @@ When key does not exist, it is considered an empty list and no operation is perf
 -------------------------------------------------------------------------------
 
 
-==# Sets
+=== Sets
 
 ==== SADD
 Add the specified members to the set stored at key. Specified members that are already a member of this set are ignored. If key does not exist, a new set is created before adding the specified members.
@@ -649,7 +649,7 @@ OK
 
 
 
-==# Sorted sets
+=== Sorted sets
 
 
 ==== ZADD
@@ -695,7 +695,7 @@ OK
 -------------------------------------------------------------------------------
 
 
-==# Hash
+=== Hash
 
 ==== HSET
 Sets field in the hash stored at key to value. If key does not exist, a new key holding a hash is created. If field already exists in the hash, it is overwritten.
