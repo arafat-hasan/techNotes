@@ -1,12 +1,11 @@
 :Author:    Arafat Hasan
-:Email:     <opendoor.arafat@gmail.com>
+:Email:     <opendoor.arafat[at]gmail[dot]com>
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
 :sectnums:
-:toc:
+:toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
-:toc: left
 :doctype: book
 
 
@@ -22,7 +21,7 @@ ifdef::env-github[]
 endif::[]
 
 ifndef::env-github[]
-image::/images/90Hyfrg.png[Redis Logo, width=600, height=400, align=center]
+image::https://imgur.com/90Hyfrg.png[Redis Logo, width=600, height=400, align=center]
 endif::[]
 
 
