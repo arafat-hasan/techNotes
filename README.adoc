@@ -1,5 +1,7 @@
 Notes
 ======
+:gitrepo: https://github.com/arafat-hasan/notes
+:image_dir: images
 :sectnums:
 :toc:
 :toc-title: Table of Content 
@@ -12,3 +14,5 @@ Notes
 
 
 include::/chapters/redis.adoc[]
+
+
