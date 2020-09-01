@@ -12,7 +12,7 @@ ifdef::env-github[]
 endif::[]
 
 ifndef::env-github[]
-image::90Hyfrg.png[Redis Logo, width=600, height=400, align=center]
+image::https://imgur.com/90Hyfrg.png[Redis Logo, width=600, height=400, align=center]
 endif::[]
 
 
