@@ -2,6 +2,10 @@ Notes
 ======
 
 
+:sectnums:
+:toc:
+:toclevels: 2
+:doctype: book
 
-== link:/chapter/redis.adoc[Redis]
 
+include::chapters/redis.adoc[]
