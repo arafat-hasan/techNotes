@@ -2,6 +2,13 @@
 :Email:     <opendoor.arafat@gmail.com>
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
+:sectnums:
+:toc:
+:toc-title: Table of Content 
+:toclevels: 3
+:toc: left
+:doctype: book
+
 
 
 
@@ -30,15 +37,6 @@ endif::[]
 ++++
 
 ===============================================================================
-
-
-
-:sectnums:
-:toc:
-:toclevels: 2
-:doctype: book
-
-
 
 
 == Introduction to Redis

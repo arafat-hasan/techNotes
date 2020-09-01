@@ -1,7 +1,5 @@
 Notes
 ======
-
-
 :sectnums:
 :toc:
 :toclevels: 2
