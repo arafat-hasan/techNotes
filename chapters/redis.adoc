@@ -6,7 +6,7 @@
 :toc:
 :toc-title: Table of Content 
 :toclevels: 3
-:toc: left
+:toc: macro
 :doctype: book
 
 
@@ -26,10 +26,6 @@ image::/images/90Hyfrg.png[Redis Logo, width=600, height=400, align=center]
 endif::[]
 
 
-
-
-
-
 ===============================================================================
 
 ++++
@@ -37,6 +33,10 @@ endif::[]
 ++++
 
 ===============================================================================
+
+
+
+toc::[] 
 
 
 == Introduction to Redis
