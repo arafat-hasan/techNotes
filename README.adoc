@@ -2,8 +2,13 @@ Notes
 ======
 :sectnums:
 :toc:
-:toclevels: 2
+:toc-title: Table of Content 
+:toclevels: 3
+:toc:
 :doctype: book
+
+
+
 
 
 include::chapters/redis.adoc[]
