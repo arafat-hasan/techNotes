@@ -6,7 +6,7 @@
 :toc:
 :toc-title: Table of Content 
 :toclevels: 3
-:toc: macro
+:toc: left
 :doctype: book
 
 
