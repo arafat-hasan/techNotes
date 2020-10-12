@@ -1,3 +1,9 @@
+---
+title: Redis Notes
+date: 2020-09-01
+category: ["professional writings"]
+tag: ["redis", "note"]
+---
 :Author:    Arafat Hasan
 :Email:     <opendoor.arafat[at]gmail[dot]com>
 :Date:      01 Septerber, 2020
@@ -70,7 +76,8 @@ SET "car" "Mercedes"
 - Redis is a cross-platform database and caching system which can be installed in Windows , mac and Linux.
 
 
-== Install Redis on CentOS 8
+== Installation
+=== Install Redis on CentOS 8
 
 ==== Update system repositories
 
@@ -150,9 +157,9 @@ $ sudo netstat -pnltu | grep redis
 -------------------------------------------------------------------------------
 
 
-=== Configure Redis
+== Configure Redis
 
-==== Allow Remote Access
+=== Allow Remote Access
 
 The default installation only allows connections from localhost or Redis server and blocks any external connections. We are going to configure Redis for remote connection from a client machine.
 
@@ -195,7 +202,7 @@ PONG
 127.0.0.1:6379>
 -------------------------------------------------------------------------------
 
-==== Securing Redis Server
+=== Securing Redis Server
 
 Our Redis setup allows anyone to access the shell and databases without authentication which poses a grave security risk. To set a password, head back to the configuration file `/etc/redis.conf`
 
@@ -306,10 +313,10 @@ $ redis-benchmark -q
 
 == Hello World in Redis
 
-==== PING
+=== PING
 Returns PONG if no argument is provided, otherwise return a copy of the argument as a bulk. This command is often used to test if a connection is still alive, or to measure latency.
 
-==== ECHO
+=== ECHO
 Returns message.
 
 -------------------------------------------------------------------------------
@@ -322,10 +329,10 @@ PONG
 "Hello World!"
 -------------------------------------------------------------------------------
 
-==== SET
+=== SET
 Set key to hold the string value. If key already holds a value, it is overwritten, regardless of its type.
 
-==== GET
+=== GET
 Get the value of key. If the key does not exist the special value nil is returned. An error is returned if the value stored at key is not a string, because GET only handles string values.
 
 -------------------------------------------------------------------------------
@@ -341,10 +348,10 @@ OK
 (nil)
 -------------------------------------------------------------------------------
 
-==== INCR
+=== INCR
 Increments the number stored at key by one. If the key does not exist, it is set to 0 before performing the operation. An error is returned if the key contains a value of the wrong type or contains a string that can not be represented as integer. This operation is limited to 64 bit signed integers.
 
-==== DECR
+=== DECR
 Decrements the number stored at key by one. If the key does not exist, it is set to 0 before performing the operation. An error is returned if the key contains a value of the wrong type or contains a string that can not be represented as integer. This operation is limited to 64 bit signed integers.
 
 -------------------------------------------------------------------------------
@@ -358,12 +365,12 @@ Decrements the number stored at key by one. If the key does not exist, it is set
 "100"
 -------------------------------------------------------------------------------
 
-==== EXISTS
+=== EXISTS
 Returns if key exists: 
 - 1 if the key exists.
 - 0 if the key does not exist.
 
-==== DEL
+=== DEL
 Removes the specified keys. A key is ignored if it does not exist.
 
 -------------------------------------------------------------------------------
@@ -382,7 +389,7 @@ Removes the specified keys. A key is ignored if it does not exist.
 -------------------------------------------------------------------------------
 
 
-==== FLUSHALL
+=== FLUSHALL
 Delete all the keys of all the existing databases, not just the currently selected one. This command never fails.
 
 -------------------------------------------------------------------------------
@@ -393,11 +400,11 @@ OK
 127.0.0.1:6379> 
 -------------------------------------------------------------------------------
 
-==== EXPIRE
+=== EXPIRE
 
 Set a timeout on key. After the timeout has expired, the key will automatically be deleted. A key with an associated timeout is often said to be volatile in Redis terminology.
 
-==== TTL
+=== TTL
 Returns the remaining time to live of a key that has a timeout. This introspection capability allows a Redis client to check how many seconds a given key will continue to be part of the dataset.
 
 -------------------------------------------------------------------------------
@@ -428,14 +435,14 @@ OK
 -------------------------------------------------------------------------------
 
 
-==== SETEX
+=== SETEX
 Set key to hold the string value and set key to timeout after a given number of seconds. This command is equivalent to executing the following commands:
 -------------------------------------------------------------------------------
 SET mykey value
 EXPIRE mykey seconds
 -------------------------------------------------------------------------------
 
-==== PERSIST
+=== PERSIST
 Remove the existing timeout on key, turning the key from volatile (a key with an expire set) to persistent (a key that will never expire as no timeout is associated).
 
 -------------------------------------------------------------------------------
@@ -458,13 +465,13 @@ OK
 -------------------------------------------------------------------------------
 
 
-==== MSET
+=== MSET
 Sets the given keys to their respective values. MSET replaces existing values with new values, just as regular SET. See MSETNX if you don't want to overwrite existing values.
 
-==== APPEND
+=== APPEND
 If key already exists and is a string, this command appends the value at the end of the string. If key does not exist it is created and set as an empty string, so APPEND will be similar to SET in this special case.
 
-==== RENAME
+=== RENAME
 Renames key to newkey. It returns an error when key does not exist. If newkey already exists it is overwritten, when this happens RENAME executes an implicit DEL operation, so if the deleted key contains a very big value it may cause high latency even if RENAME itself is usually a constant-time operation.
 
 -------------------------------------------------------------------------------
@@ -490,7 +497,7 @@ OK
 
 == Redis Datatypes
 
-NOTE: https://redis.io/topics/data-types[Redis Datatypes]
+Official Documentation: https://redis.io/topics/data-types[Redis Datatypes]
 
 - Strings
 - Lists
@@ -644,7 +651,7 @@ OK
 
 
 
-=== Sorted sets
+=== Sorted Sets
 
 
 ==== ZADD
@@ -770,7 +777,7 @@ Returns the number of fields contained in the hash stored at key.
 
 == Redis Persistence
 
-NOTE: https://redis.io/topics/persistence[Read Here^]
+Official Documentation: https://redis.io/topics/persistence[Read More Here^]
 
 
 
