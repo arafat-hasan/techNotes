@@ -1,6 +1,6 @@
-Notes
-======
-:gitrepo: https://github.com/arafat-hasan/notes
+Information Technology Related Notes
+===================================
+:gitrepo: https://github.com/arafat-hasan/techNotes
 :image_dir: images
 :sectnums:
 :toc:
@@ -13,6 +13,6 @@ Notes
 
 
 
-include::/chapters/redis.adoc[]
+include::/en/chapters/redis.adoc[]
 
 
