@@ -1,2 +1,12 @@
+---
+title: Python Django Notes
+date: 
+category: ["professional writings"]
+tag: ["note"]
+draft: false
+---
+
+
+
 Python Django Notes
 ===================

@@ -1,4 +1,10 @@
-
+---
+title: LAMP Installation and Config
+date: 
+category: ["professional writings"]
+tag: ["note", "lamp", "installation", "centos"]
+draft: true
+---
 
 
 ## Install phpMyAdmin on Centos 8
