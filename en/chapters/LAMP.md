@@ -1,9 +1,9 @@
 ---
 title: LAMP Installation and Config
-date: 
+date: 2020-09-25
 category: ["professional writings"]
 tag: ["note", "lamp", "installation", "centos"]
-draft: true
+draft: false
 ---
 
 
