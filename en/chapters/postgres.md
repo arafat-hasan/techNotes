@@ -4,6 +4,7 @@ date: 2020-08-12
 category: ["professional writings"]
 tag: ["postgressql", "note", "postgres"]
 draft: false
+type: posts
 ---
 
 <p align="center">

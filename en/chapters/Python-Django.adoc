@@ -4,6 +4,7 @@ date:
 category: ["professional writings"]
 tag: ["note"]
 draft: true
+type: posts
 ---
 
 

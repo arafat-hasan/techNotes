@@ -4,6 +4,7 @@ date: 2020-09-01
 category: ["professional writings"]
 tag: ["redis", "note"]
 draft: false
+type: posts
 ---
 
 
