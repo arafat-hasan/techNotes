@@ -8,6 +8,8 @@ type: posts
 ---
 
 
+
+
 :Author:    Arafat Hasan
 :Email:     <opendoor.arafat[at]gmail[dot]com>
 :Date:      01 Septerber, 2020
@@ -16,7 +18,7 @@ type: posts
 :toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
-:doctype: book
+:doctype: article
 :source-highlighter: pygments
 :pygments-css: style
 :pygments-style: manni
@@ -38,8 +40,6 @@ endif::[]
 
 
 
-Redis Notes
-===========
 
 
 
