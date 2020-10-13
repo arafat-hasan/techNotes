@@ -309,12 +309,13 @@ Enable CR repo:
 
 
 SELinux Alert Browser এ এই সাজেশন দিয়েছে: তা চালালাম:
+```
 You should report this as a bug.
 You can generate a local policy module to allow this access.
 Allow this access for now by executing:
 # ausearch -c 'snapd' --raw | audit2allow -M my-snapd
 # semodule -X 300 -i my-snapd.pp
-
+```
 
 
 
