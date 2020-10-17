@@ -1,10 +1,10 @@
 ---
-title: Hello World in Redis
+title: Redis Introduction and Installation
 author: Arafat Hasan
 date: 2020-09-01
 category: ["professional writings"]
 tag: ["redis", "note"]
-series: ["redis"]
+series: ["Redis"]
 featured_image: "./../../images/90Hyfrg.png"
 prev: /en/prowritings/chapters/redis-intro
 draft: false
