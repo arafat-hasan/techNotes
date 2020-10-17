@@ -33,13 +33,12 @@ type: posts
 ifdef::env-github[]
 ++++
 <p align="center">
-<img align="center", width="600", height="400", alt="Redis Logo" src="/assets/images/technotes/90Hyfrg.png">
+<img align="center", width="600", height="400", alt="Redis Logo" src="../images/90Hyfrg.png">
 </p>
 ++++
 endif::[]
 
 ifndef::env-github[]
-
 endif::[]
 
 
