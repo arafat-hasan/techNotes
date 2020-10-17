@@ -1,12 +1,14 @@
 ---
 title: Hello World in Redis
+author: Arafat Hasan
 date: 2020-09-01
 category: ["professional writings"]
 tag: ["redis", "note"]
+series: ["redis"]
+featured_image: "https://imgur.com/90Hyfrg.png"
 prev: /en/prowritings/chapters/redis-intro
 images: 
     - ../images/90Hyfrg.png
- featured_image = "../images/90Hyfrg.png"
 draft: false
 type: posts
 ---

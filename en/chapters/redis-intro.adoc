@@ -1,12 +1,12 @@
 ---
 title: Redis Introduction and Installation
+author: Arafat Hasan
 date: 2020-09-01
 category: ["professional writings"]
 tag: ["redis", "note", "installation"]
+series: ["redis"]
+featured_image: "https://imgur.com/90Hyfrg.png"
 next: /en/prowritings/chapters/redis-hello-world
-images: 
-    - ../images/90Hyfrg.png
- featured_image = "../images/90Hyfrg.png"
 draft: false
 type: posts
 ---
@@ -39,7 +39,7 @@ ifdef::env-github[]
 endif::[]
 
 ifndef::env-github[]
-image::https://imgur.com/90Hyfrg.png[Redis Logo, width=600, height=400, align=center]
+
 endif::[]
 
 
