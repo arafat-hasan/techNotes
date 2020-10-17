@@ -1,3 +1,4 @@
+ifndef::env-github[]
 ---
 title: Hello World in Redis
 author: Arafat Hasan
@@ -10,7 +11,7 @@ prev: /en/prowritings/chapters/redis-intro
 draft: false
 type: posts
 ---
-
+endif::[]
 
 
 
@@ -19,6 +20,7 @@ type: posts
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
 :sectnums:
+:imagesdir: ../images
 :toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
@@ -41,9 +43,6 @@ endif::[]
 ifndef::env-github[]
 
 endif::[]
-
-
-
 
 
 
