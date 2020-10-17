@@ -49,7 +49,7 @@ endif::[]
 toc::[] 
 
 
-_This writing is actually a draft note made for myself, so that I myself don’t forget what I had learned. But I think this note will be helpful for those who want to learn Redis. If you don't know what Redis is, or haven't installed Redis in your system yet, check it out here._
+_This writing is actually a draft note made for myself, so that I myself don’t forget what I had learned. But I think this note will be helpful for those who want to learn Redis. If you don't know what Redis is, or haven't installed Redis in your system yet, check it out link:../redis-intro[here^]._
 
 
 == Hello World in Redis
