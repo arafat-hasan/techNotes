@@ -1,12 +1,12 @@
 ---
-title: Redis Introduction and Installation
+title: Hello World in Redis
 author: Arafat Hasan
 date: 2020-09-01
 category: ["professional writings"]
-tag: ["redis", "note", "installation"]
+tag: ["redis", "note"]
 series: ["redis"]
-featured_image: "https://imgur.com/90Hyfrg.png"
-next: /en/prowritings/chapters/redis-hello-world
+featured_image: "./../../images/90Hyfrg.png"
+prev: /en/prowritings/chapters/redis-intro
 draft: false
 type: posts
 ---
@@ -19,14 +19,15 @@ type: posts
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
 :sectnums:
+:imagesdir: ./../../images
 :toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
 :doctype: article
-:source-highlighter: pygments
-:pygments-css: style
-:pygments-style: manni
-:pygments-linenums-mode: inline
+:source-highlighter: rouge
+:rouge-style: base16.solarized.light
+:rogue-css: style
+:icons: font
 
 
 
@@ -65,16 +66,16 @@ _car = Mercedes_
 In this case, car is the key and Mercedes is the value. In a Redis database, this information can be  written using the syntax:
 
 
----------------------
+```text, linenums
 SET  "key1" "value1"
----------------------
+```
 
 Our example will translate to:
 
 
----------------------
+```text, linenums
 SET "car" "Mercedes"
----------------------
+```
 
 === Benefits of using Redis
 
@@ -96,18 +97,18 @@ SET "car" "Mercedes"
 Login to your CentOS 8 / RHEL 8 system and update system packages and repositories using the command:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo dnf update -y
--------------------------------------------------------------------------------
+```
 
 ==== Install Redis with dnf
 
 Redis version 5.0.x is now included in CentOS 8 AppStream repository and installing it is a walk in the park. Simply run the command:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo dnf install redis -y
--------------------------------------------------------------------------------
+```
 
 
 সংস্থাপন সম্পন্ন হলে নিচের কমান্ডটি চালিয়ে রেডিসের সংস্করণটি যাচাই করতে পারবেন:
@@ -115,10 +116,10 @@ $ sudo dnf install redis -y
 Once installed, you can verify the version of Redis installed by running the command:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 [arafat@server ~]$ rpm -q redis 
 redis-5.0.3-2.module_el8.2.0+318+3d7e67ea.x86_64
--------------------------------------------------------------------------------
+```
 
 আউটপুট থেকে, এটি স্পষ্ট যে আমরা রেডিস সংস্করণ ৫.০.৩ সংস্থাপন করেছি। রেডিসের সংস্করণ, আর্কিটেকচার, লাইসেন্স এবং সংক্ষিপ্ত বিবরণ পেতে এই কমান্ডটি চালান:
 
@@ -126,9 +127,9 @@ From the output , it is clear that we have installed Redis version 5.0.3. To ret
 
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ rpm -qi redis
--------------------------------------------------------------------------------
+```
 
 
 রেডিস চালু করতে সিস্টেম কনট্রোল দিয়ে রেডিস চালু করতে হবে।	
@@ -136,9 +137,9 @@ $ rpm -qi redis
 To start Redis:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo systemctl start redis 
--------------------------------------------------------------------------------
+```
 
 
 প্রতি সিস্টেম বুটে স্বয়ংক্রিয়ভাবে রেডিস চালু করতে চাইলে সিস্টেম কনট্রোলে রেডিস সক্ষম করতে হবে:
@@ -146,27 +147,27 @@ $ sudo systemctl start redis
 If you want to automatically start Redis in each system boot, you need to enable Redis:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo systemctl enable redis
--------------------------------------------------------------------------------
+```
 
 রেডিসের অবস্থা:
 
 To see status:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo systemctl status redis
--------------------------------------------------------------------------------
+```
 
 ডিফল্টভাবে, রেডিস ৬৩৭৯ পোর্টে চালিত হয়। `netstat` আদেশ চালিয়ে এটি নিশ্চিত হওয়া যাবে:
 
 By default, Redis runs on port 6379. This can be confirmed by running the `netstat` command:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo netstat -pnltu | grep redis
--------------------------------------------------------------------------------
+```
 
 
 == Configure Redis
@@ -178,41 +179,41 @@ The default installation only allows connections from localhost or Redis server 
 Access the configuration file as shown:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo vim /etc/redis.conf
--------------------------------------------------------------------------------
+```
 
 Locate the `bind` parameter and replace `127.0.0.1` with `0.0.0.0`
 
 
--------------------------------------------------------------------------------
+```text, linenums
 bind 0.0.0.0
--------------------------------------------------------------------------------
+```
 
 Save and close the configuration file. For the changes to come into effect, restart Redis.
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo systemctl restart redis
--------------------------------------------------------------------------------
+```
 
 To log in to Redis shell, run the command:
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ redis-cli
--------------------------------------------------------------------------------
+```
 
 
 Try to ping redis server. You should get a ‘PONG’ response as shown.
 
 
--------------------------------------------------------------------------------
+```text, linenums
 [arafat@server ~]$ redis-cli
 127.0.0.1:6379> ping
 PONG
 127.0.0.1:6379>
--------------------------------------------------------------------------------
+```
 
 === Securing Redis Server
 
@@ -221,7 +222,7 @@ Our Redis setup allows anyone to access the shell and databases without authenti
 Locate and uncomment the `requirepass` parameter and specify a strong password.
 
 
--------------------------------------------------------------------------------
+```text, linenums
 ================================== SECURITY ===================================
 
 # Require clients to issue AUTH <PASSWORD> before processing any other
@@ -237,39 +238,39 @@ Locate and uncomment the `requirepass` parameter and specify a strong password.
 #
 # requirepass foobared
 
--------------------------------------------------------------------------------
+```
 
 Restart Redis and head back to the server.
 
 
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo systemctl restart redis
--------------------------------------------------------------------------------
+```
 
 If you attempt to run any command before authenticating, the error shown below will be displayed
 
 
--------------------------------------------------------------------------------
+```text, linenums
 [arafat@server ~]$ redis-cli
 127.0.0.1:6379> ping
 (error) NOAUTH Authentication required.
 127.0.0.1:6379>
--------------------------------------------------------------------------------
+```
 To authenticate, type ‘auth’ followed by the password set.
--------------------------------------------------------------------------------
+```text, linenums
 auth 'PASSWORD'
--------------------------------------------------------------------------------
+```
 
 Thereafter, you can continue running your commands.
 
--------------------------------------------------------------------------------
+```text, linenums
 [arafat@server ~]$ redis-cli
 127.0.0.1:6379> auth 'PASSWORD'
 OK
 127.0.0.1:6379> ping
 PONG
 127.0.0.1:6379>
--------------------------------------------------------------------------------
+```
 To come out from redis-cli, type `exit`
 
 
@@ -279,24 +280,24 @@ To come out from redis-cli, type `exit`
 Lastly, we need to configure the firewall to allow remote connections to the Redis server. To do this, we need to open the redis port which is 6379.
 
 So, run the commands below.
--------------------------------------------------------------------------------
+```text, linenums
 $ sudo firewall-cmd --add-port=6379/tcp --permanent
 $ sudo firewall-cmd --reload
--------------------------------------------------------------------------------
+```
 To access Redis remotely, use the syntax below.
--------------------------------------------------------------------------------
+```text, linenums
 $ redis-cli -h REDIS_IP_ADDRESS
--------------------------------------------------------------------------------
+```
 Next authenticate and hit ‘ENTER’
 
 The IP address of our Redis server is 192.168.1.5 The command from another client PC will be
--------------------------------------------------------------------------------
+```text, linenums
 $ redis-cli -h 192.168.1.5
--------------------------------------------------------------------------------
+```
 Next, provide the password and hit ‘ENTER’
--------------------------------------------------------------------------------
+```text, linenums
 auth 'PASSWORD'
--------------------------------------------------------------------------------
+```
 
 
 === How to perform Redis Benchmark
@@ -318,7 +319,7 @@ Some of the command options you can use with Redis include
 Examples:
 
 To confirm the average no. of requests that your Redis server can handle run the command:
--------------------------------------------------------------------------------
+```text, linenums
 $ redis-benchmark -q
--------------------------------------------------------------------------------
+```
 
