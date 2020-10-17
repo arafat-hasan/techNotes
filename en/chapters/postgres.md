@@ -1,8 +1,9 @@
 ---
 title: PostgresSQL Notes
 date: 2020-08-12
-category: ["professional writings"]
-tag: ["postgressql", "note", "postgres"]
+categories: ["professional writings"]
+tags: ["postgressql", "note", "postgres"]
+series: []
 draft: false
 type: posts
 ---
