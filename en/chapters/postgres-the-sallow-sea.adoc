@@ -1,11 +1,11 @@
 ---
-title: "PostgreSQL: The Surface Sea"
+title: "PostgreSQL: The Sallow Sea"
 author: Arafat Hasan
 date: 2020-08-12
 categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
-featured_image: "./../../images/postgres-logo.png"
+featured_image: "./../../images/postgres/postgres-logo.png"
 draft: false
 type: posts
 ---
@@ -18,7 +18,7 @@ type: posts
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
 :sectnums:
-:imagesdir: ./../../images
+:imagesdir: ./../../images/postgres
 :toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
@@ -32,9 +32,9 @@ type: posts
 ifdef::env-github[]
 ++++
 <p align="center">
-<img align="center" width="250" height="250" alt="PostgreSQL Logo" src="./../images/postgres-logo.png">
+<img align="center" width="250" height="250" alt="PostgreSQL Logo" src="./../images/postgres/postgres-logo.png">
 <p>
-<h1 align="center"> PostgreSQL Notes </h1>
+<h1 align="center"> PostgreSQL: The Sallow Sea </h1>
 <br>
 ++++
 endif::[]
@@ -488,7 +488,7 @@ test=# SELECT * FROM person WHERE id = 2002;
 
 
 === Foreign Keys, Joins and Relationships
-image:https://imgur.com/N0Qcfe8.jpg[Forign Key, Primary Key and Relations]
+image:foreign-primary-relations.png[Forign Key, Primary Key and Relations]
 
 
 Adding relations between tables
@@ -750,7 +750,7 @@ INNER JOIN table2
 ON table1.column_name = table2.column_name;
 ```
 
-image:https://imgur.com/oQjyWQa.jpg[INNER JOIN]
+image:inner-join.gif[INNER JOIN]
 
 
 Now let's join our tables based on foreign keys.
@@ -802,7 +802,7 @@ JOIN car ON person.car_id = car.id;
 
 The LEFT JOIN keyword returns all records from the left table (table1), and the matched records from the right table (table2). The result is NULL from the right side, if there is no match.
 
-image:https://imgur.com/sS5mapo.jpg[LEFT JOIN]
+image:left-join.gif[LEFT JOIN]
 
 ~_Command_~
 ```sql
@@ -835,7 +835,7 @@ LEFT JOIN car ON person.car_id = car.id;
 The RIGHT JOIN keyword returns all records from the right table (table2), and the matched records from the left table (table1). The result is NULL from the left side, when there is no match.
 
 
-image:https://imgur.com/5ex2jIP.jpg[RIGHT JOIN]
+image:right-join.gif[RIGHT JOIN]
 
 
 
@@ -846,7 +846,7 @@ Note: FULL OUTER JOIN can potentially return very large result-sets!
 
 FULL OUTER JOIN and FULL JOIN are the same.
 
-image:https://imgur.com/AUaYHON.jpg[FULL OUTER JOIN]
+image:full-outer-join.gif[FULL OUTER JOIN]
 
 
 === Exporting Query Results to CSV

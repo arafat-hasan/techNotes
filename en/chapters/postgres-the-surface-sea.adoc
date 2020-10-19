@@ -5,7 +5,7 @@ date: 2020-08-12
 categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
-featured_image: "./../../images/postgres-logo.png"
+featured_image: "./../../images/postgres/postgres-logo.png"
 draft: false
 type: posts
 ---
@@ -18,7 +18,7 @@ type: posts
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
 :sectnums:
-:imagesdir: ./../../images
+:imagesdir: ./../../images/postgres
 :toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
@@ -32,9 +32,9 @@ type: posts
 ifdef::env-github[]
 ++++
 <p align="center">
-<img align="center" width="250" height="250" alt="PostgreSQL Logo" src="./../images/postgres-logo.png">
+<img align="center" width="250" height="250" alt="PostgreSQL Logo" src="./../images/postgres/postgres-logo.png">
 <p>
-<h1 align="center"> PostgreSQL Notes </h1>
+<h1 align="center"> PostgreSQL: The Surface Sea </h1>
 <br>
 ++++
 endif::[]
@@ -49,7 +49,7 @@ endif::[]
 === Mockaroo Data Generator
 We will use a site named https://mockaroo.com/[Mockaroo^] to insert a lot of data into our table for our learning convenience. Mockaroo is an online realist test data generator. We will download a bunch of dummy but realistic data in SQL format and execute the SQL file in the terminal.
 
-image:https://imgur.com/rLGnx8z.jpg[Generate data using Mockaroo]
+image:mockaroo.png[Generate data using Mockaroo]
 
 Notes:
 
