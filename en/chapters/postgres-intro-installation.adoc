@@ -1,0 +1,281 @@
+---
+title: PostgreSQL Introduction and Installation
+author: Arafat Hasan
+date: 2020-08-12
+categories: ["professional writings"]
+tags: ["postgresql", "note", "postgres"]
+series: ["PostgreSQL"]
+featured_image: "./../../images/postgres-logo.png"
+draft: false
+type: posts
+---
+
+
+
+
+:Author:    Arafat Hasan
+:Email:     <opendoor.arafat[at]gmail[dot]com>
+:Date:      01 Septerber, 2020
+:Revision:  v1.0
+:sectnums:
+:imagesdir: ./../../images
+:toc: macro
+:toc-title: Table of Content 
+:toclevels: 3
+:doctype: article
+:source-highlighter: rouge
+:rouge-style: base16.solarized.light
+:rogue-css: style
+:icons: font
+
+
+ifdef::env-github[]
+++++
+<p align="center">
+<img align="center" width="250" height="250" alt="PostgreSQL Logo" src="./../images/postgres-logo.png">
+<p>
+<h1 align="center"> PostgreSQL Notes </h1>
+<br>
+++++
+endif::[]
+
+ifndef::env-github[]
+endif::[]
+
+
+== Introduction to PostgreSQL
+
+PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance. 
+
+PostgreSQL has earned a strong reputation for its proven architecture, reliability, data integrity, robust feature set, extensibility, and the dedication of the open source community behind the software to consistently deliver performant and innovative solutions. PostgreSQL runs on all major operating systems, including Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64), and Windows.
+
+
+[quote, Wikipedia]
+____
+PostgreSQL (/ˈpoʊstɡrɛs ˌkjuː ˈɛl/), also known as Postgres, is a free and open-source relational database management system (RDBMS) emphasizing extensibility and SQL compliance. It was originally named POSTGRES, referring to its origins as a successor to the Ingres database developed at the University of California, Berkeley. In 1996, the project was renamed to PostgreSQL to reflect its support for SQL. After a review in 2007, the development team decided to keep the name PostgreSQL and the alias Postgres.
+____
+
+
+
+== 🚧 Installation
+
+
+=== Install PostgreSQL in Ubuntu
+
+To install PostgreSQL in ubuntu, we have first to refresh our server’s local package index:
+```
+$ sudo apt update
+```
+Then, install the Postgres package along with a -contrib package that adds some additional utilities and functionality:
+```
+$ sudo apt install postgresql postgresql-contrib
+```
+
+See More: https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart[How To Install PostgreSQL on Ubuntu 20.04^]
+
+
+=== Install PostgreSQL in CentOS
+
+
+==== Method 1: PostgreSQL Yum Repository
+
+Install the repository RPM:
+```
+$ sudo dnf install https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+```
+Disable the built-in PostgreSQL module:
+```
+$ sudo dnf -qy module disable postgresql
+```
+Install PostgreSQL:
+```
+$ sudo dnf install postgresql12-server
+```
+
+Now PostgreSQL is installed, we have to perform some initialization steps to prepare a new database cluster for PostgreSQL.
+
+See More: https://www.postgresql.org/download/linux/redhat/[Linux downloads (Red Hat family)^]
+
+==== Method 2: Using DNF
+
+In DNF, CentOS 8’s default package manager, _modules_ are special collections of RPM packages that together make up a larger application. This is intended to make installing packages and their dependencies more intuitive for users.
+
+List out the available streams for the `postgresql` module using the `dnf` command:
+
+```
+$ sudo dnf module list postgresql
+```
+
+~_Output_~
+```
+postgresql                           9.6                             client, server [d]                          PostgreSQL server and client module                         
+postgresql                           10 [d]                          client, server [d]                          PostgreSQL server and client module                         
+postgresql                           12                              client, server                              PostgreSQL server and client module
+```
+
+In this output, we can see three versions of PostgreSQL available from the **AppStream** repository: `9.6`, `10`, and `12`. The stream that provides Postgres version 10 is the default, as indicated by the `[d]` following it. If we want to install that version, we could just run `sudo dnf install postgresql-server` and move on to the next step.
+
+To install PostgreSQL version 12, we have to enable that version’s module stream. When we enable a module stream, we override the default stream and make all of the packages related to the enabled stream available on the system.
+
+To enable the module stream for Postgres version 12, run the following command:
+```
+$ sudo dnf module enable postgresql:12
+```
+
+~_Output_~
+```
+====================================================================
+ Package        Architecture  Version          Repository      Size
+====================================================================
+Enabling module streams:
+ postgresql                   12                                   
+
+Transaction Summary
+====================================================================
+
+Is this ok [y/N]: y
+
+```
+
+After enabling the version 12 module stream, we can install the `postgresql-server` package to install PostgreSQL 12 and all of its dependencies:
+
+```
+$ sudo dnf install postgresql-server
+```
+
+When given the prompt, confirm the installation by pressing `y` then `ENTER`:
+
+~_Output_~
+```
+. . .
+Install  4 Packages
+
+Total download size: 16 M
+Installed size: 62 M
+Is this ok [y/N]: y
+
+```
+Now PostgreSQL is installed, we have to perform some initialization steps to prepare a new database cluster for PostgreSQL.
+
+See More: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-8[How To Install and Use PostgreSQL on CentOS 8^]
+
+
+
+== Initial Configuration
+=== Creating a New PostgreSQL Database Cluster
+
+We have to create a new PostgreSQL database cluster before we can start creating tables and loading them with data. A database cluster is a collection of databases that are managed by a single server instance. Creating a database cluster consists of creating the directories in which the database data will be placed, generating the shared catalog tables, and creating the `template1` and `postgres` databases.
+
+The `template1` database is a template of sorts used to create new databases; everything that is stored in `template1`, even objects we add ourselves, will be placed in new databases when they’re created. The `postgres` database is a default database designed for use by users, utilities, and third-party applications.
+
+The Postgres package we installed in the previous step comes with a handy script called `postgresql-setup` which helps with low-level database cluster administration.
+
+To create a database cluster, run the script using `sudo` and with the `--initdb` option.
+
+
+_If PostgreSQL is installed using the PostgreSQL Yum repository:_
+```
+$ /usr/pgsql-12/bin/postgresql-12-setup initdb
+```
+
+_If PostgreSQL is installed using DNF:_
+```
+$ sudo postgresql-setup --initdb
+```
+
+~_Output_~
+```
+ * Initializing database in '/var/lib/pgsql/data'
+ * Initialized, logs are in /var/lib/pgsql/initdb_postgresql.log
+```
+
+
+Now start and enable PostgreSQL using `systemctl`.
+
+
+_If PostgreSQL is installed using the PostgreSQL Yum repository:_
+
+```
+$ systemctl enable postgresql-12
+$ systemctl start postgresql-12
+```
+_If PostgreSQL is installed using DNF:_
+```
+$ sudo systemctl start postgresql
+$ sudo systemctl enable postgresql
+```
+
+~_Output_~
+```
+Created symlink /etc/systemd/system/multi-user.target.wants/postgresql.service → /usr/lib/systemd/system/postgresql.service.
+```
+
+Now that PostgreSQL is up and running, we will go over using roles to learn how Postgres works and how it is different from similar database management systems.
+
+
+
+
+=== Understanding PostgreSQL Roles and Databases
+
+
+By default, Postgres uses a concept called roles to handle authentication and authorization. These are, in some ways, similar to regular Unix-style accounts, but Postgres does not distinguish between users and groups and instead prefers the more flexible term role.
+
+Upon installation, Postgres is set up to use `ident` authentication, meaning that it associates Postgres roles with a matching Unix/Linux system account. If a role exists within Postgres, a Unix/Linux username with the same name can sign in as that role.
+
+The installation procedure created a user account called `postgres` that is associated with the default Postgres role. To use Postgres, at first, we have to log in using that role.
+
+So we have to switch over to the `postgres` UNIX user, which is created upon installation of Postgres, and then from the `postgres` UNIX user, we will able to log on Postgres server.
+```
+[arafat@server ~]$ sudo -i -u postgres
+[postgres@server ~]$ psql
+```
+
+Alternatively, to access a Postgres prompt without switching users
+```
+[arafat@server ~]$ sudo -u postgres psql
+```
+
+
+
+
+=== Creating a New Postgres Role
+
+
+To log in with ident-based authentication, we will need a Linux user with the same name as our Postgres role and database.
+
+If we don’t have a matching Linux user available, we must create one with the `adduser` command.
+```
+[arafat@server ~]$ sudo adduser postgresuser
+```
+
+We showed how to create a UNIX user named `postgresuser` here, but we will not use it. Instead, we will use the existing `arafat` user for a new Postgres roll.
+
+Now we will create a Postgres role. After switching to `postgres` Linux user:
+```
+postgres@server:~$ createuser --interactive
+Enter name of role to add: arafat
+Shall the new role be a superuser? (y/n) y
+```
+
+
+Another assumption that the Postgres authentication system makes by default is that for any role used to log in, that role will have a database with the same name which it can access.
+
+This means that if the user we created in the last section is called `arafat`, that role will attempt to connect to a database which is also called `arafat` by default. We can create such a database with the `createdb` command.
+
+If we are logged in as the `postgres` user, we would type something like:
+
+```
+postgres@server:~$ createdb arafat
+```
+
+Now we will able to connect to `psql` from unix user `arafat` to Postgres role `arafat`. 
+```
+[arafat@server ~]$ psql
+psql (12.3)
+Type &quot;help&quot; for help.
+
+arafat=#
+```
+
+
+

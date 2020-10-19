@@ -1,0 +1,243 @@
+---
+title: "PostgreSQL: Very First Commands:
+author: Arafat Hasan
+date: 2020-08-12
+categories: ["professional writings"]
+tags: ["postgresql", "note", "postgres"]
+series: ["PostgreSQL"]
+featured_image: "./../../images/postgres-logo.png"
+draft: false
+type: posts
+---
+
+
+
+
+:Author:    Arafat Hasan
+:Email:     <opendoor.arafat[at]gmail[dot]com>
+:Date:      01 Septerber, 2020
+:Revision:  v1.0
+:sectnums:
+:imagesdir: ./../../images
+:toc: macro
+:toc-title: Table of Content 
+:toclevels: 3
+:doctype: article
+:source-highlighter: rouge
+:rouge-style: base16.solarized.light
+:rogue-css: style
+:icons: font
+
+
+ifdef::env-github[]
+++++
+<p align="center">
+<img align="center" width="250" height="250" alt="PostgreSQL Logo" src="./../images/postgres-logo.png">
+<p>
+<h1 align="center"> PostgreSQL Notes </h1>
+<br>
+++++
+endif::[]
+
+ifndef::env-github[]
+endif::[]
+
+
+
+== Some Very First Commands
+
+
+- `\q`: Quit/Exit
+- `\l`:  List all databases in the current PostgreSQL database server
+- `\h`: Show the list of SQL commands
+- `\c __database__`:  Connect to a database
+- `\d`: To describe (list) what tables are in the database
+- `\d __table__`: Show table definition (columns, etc.) including triggers
+- `\i __filename__`: to run (include) a script file of SQL commands
+- `\w __filename__`: To write the last SQL command to a file
+- `\h _command_`: Show syntax on this SQL command
+- `\?`: Show the list of postgres commands
+
+
+
+=== Examples
+
+```
+[arafat@server ~]$ psql
+psql (12.3)
+Type &quot;help&quot; for help.
+
+arafat=# \l
+                                   List of databases
+     Name     |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+--------------+----------+----------+-------------+-------------+-----------------------
+ arafat       | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres     | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+              |          |          |             |             | postgres=CTc/postgres
+ template1    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+              |          |          |             |             | postgres=CTc/postgres
+(4 rows)
+
+arafat=# \h CREATE DATABASE;
+Command:     CREATE DATABASE
+Description: create a new database
+Syntax:
+CREATE DATABASE name
+    [ [ WITH ] [ OWNER [=] user_name ]
+           [ TEMPLATE [=] template ]
+           [ ENCODING [=] encoding ]
+           [ LC_COLLATE [=] lc_collate ]
+           [ LC_CTYPE [=] lc_ctype ]
+           [ TABLESPACE [=] tablespace_name ]
+           [ ALLOW_CONNECTIONS [=] allowconn ]
+           [ CONNECTION LIMIT [=] connlimit ]
+           [ IS_TEMPLATE [=] istemplate ] ]
+
+URL: https://www.postgresql.org/docs/12/sql-createdatabase.html
+
+```
+
+
+
+=== CREATE DATABASE
+```
+arafat=# CREATE DATABASE test;
+CREATE DATABASE
+arafat=# \l
+                                     List of databases
+     Name     |    Owner     | Encoding |   Collate   |    Ctype    |   Access privileges   
+--------------+--------------+----------+-------------+-------------+-----------------------
+ arafat       | postgres     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres     | postgres     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0    | postgres     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+              |              |          |             |             | postgres=CTc/postgres
+ template1    | postgres     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+              |              |          |             |             | postgres=CTc/postgres
+ test         | arafat       | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+(5 rows)
+
+arafat=# \c test;
+You are now connected to database &quot;test&quot; as user &quot;arafat&quot;.
+```
+
+
+=== DROP DATABASE
+```
+arafat_hasan=# DROP DATABASE test;
+DROP DATABASE
+```
+
+
+=== CREATE TABLE
+
+We have to create a database again as we deleted the `test` database in the previous step. Here `\d` a list of tables, and there is no table in our newly created database.
+```
+arafat=# CREATE DATABASE test;
+CREATE DATABASE
+test=# \d
+Did not find any relations.
+```
+
+Now here we are creating a new table named `person`:
+
+~_Command_~
+```sql
+CREATE TABLE person (
+ id BIGSERIAL NOT NULL PRIMARY KEY,
+ first_name VARCHAR(50) NOT NULL,
+ last_name VARCHAR(50) NOT NULL,
+ gender VARCHAR(50) NOT NULL,
+ date_of_birth DATE NOT NULL,
+ email VARCHAR(150));
+```
+
+~_Output_~
+```
+CREATE TABLE
+```
+
+Now check the list of tables:
+```
+test=# \d
+                List of relations
+ Schema |     Name      |   Type   |    Owner     
+--------+---------------+----------+--------------
+ public | person        | table    | arafat_hasan
+ public | person_id_seq | sequence | arafat_hasan
+(2 rows)
+```
+
+`person_id_seq` is not a table, it is a sequence to maintain and increment the `BIGSERIAL` value in the `person` table. The keyword `NOT NULL` means that this field can not be null or blank, we must have enter data for that field. Someone may not have email, so have kept the field as optional.
+
+
+
+=== Table Definition
+```
+test=#  \d person;
+                                       Table "public.person"
+    Column     |          Type          | Collation | Nullable |              Default               
+---------------+------------------------+-----------+----------+------------------------------------
+ id            | bigint                 |           | not null | nextval('person_id_seq'::regclass)
+ first_name    | character varying(50)  |           | not null | 
+ last_name     | character varying(50)  |           | not null | 
+ gender        | character varying(50)  |           | not null | 
+ date_of_birth | date                   |           | not null | 
+ email         | character varying(150) |           |          | 
+Indexes:
+    "person_pkey" PRIMARY KEY, btree (id)
+
+```
+
+
+=== INSERT INTO
+Notice that, as email is not `NOT NULL` so it is optional to insert into the table.
+
+~_Command_~
+```sql
+INSERT INTO person (first_name, last_name, gender, date_of_birth)
+ VALUES('Anne', 'Smith', 'female', DATE '1988-01-09');
+```
+
+~_Output_~
+```
+INSERT 0 1
+```
+
+~_Command_~
+```sql
+INSERT INTO person (first_name, last_name, gender, date_of_birth, email)
+ VALUES('Jack', 'Doe', 'male', DATE '1985-11-03', 'jack@example.com');
+```
+
+~_Output_~
+```
+INSERT 0 1
+```
+
+
+=== SELECT
+Fetch all data from table:
+
+~_Command_~
+```sql
+SELECT * FROM person;
+```
+
+~_Output_~
+```
+ id | first_name | last_name | gender | date_of_birth |      email       
+----+------------+-----------+--------+---------------+------------------
+  1 | Anne       | Smith     | female | 1988-01-09    | 
+  2 | Jack       | Doe       | male   | 1985-11-03    | jack@example.com
+(2 rows)
+```
+
+
+=== DROP TABLE
+Now we want to delete our table `person`.
+```
+test=# DROP TABLE person;
+DROP TABLE
+```
+
