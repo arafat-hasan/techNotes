@@ -4,7 +4,7 @@ date: 2020-08-12
 categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: []
-draft: false
+draft: true
 type: posts
 ---
 

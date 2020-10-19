@@ -18,7 +18,6 @@ type: posts
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
 :sectnums:
-:imagesdir: ./../../images/postgres
 :toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
@@ -28,6 +27,13 @@ type: posts
 :rogue-css: style
 :icons: font
 
+
+ifdef::env-github[]
+:imagesdir: ./../images/postgres
+endif::[]
+ifndef::env-github[]
+:imagesdir: ./../../images/postgres
+endif::[]
 
 ifdef::env-github[]
 ++++
@@ -42,6 +48,11 @@ endif::[]
 ifndef::env-github[]
 endif::[]
 
+
+
+toc::[] 
+
+_This writing is actually a draft note made for me so that I myself don’t forget what I have learned. For that, I think this note will be helpful for those who want to learn new Postgres._
 
 == Introduction to PostgreSQL
 
