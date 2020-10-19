@@ -1,0 +1,14 @@
+---
+title: Python Django Notes
+date: 
+categories: ["professional writings"]
+tags: ["note"]
+series: []
+draft: true
+type: posts
+---
+
+
+
+Python Django Notes
+===================
