@@ -1,6 +1,6 @@
 :Author:    Arafat Hasan
 :Email:     <opendoor.arafat[at]gmail[dot]com>
-:Date:      01 Septerber, 2020
+:Date:      02 Septerber, 2020
 :Revision:  v1.0
 :sectnums:
 :imagesdir: ./

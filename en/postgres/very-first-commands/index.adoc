@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL: Very First Commands"
 author: Arafat Hasan
-date: 2020-08-12
+date: 2020-08-11
 categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]

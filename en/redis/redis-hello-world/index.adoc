@@ -1,7 +1,7 @@
 ---
 title: "Redis: Hello World!"
 author: Arafat Hasan
-date: 2020-09-01
+date: 2020-09-02
 categories: ["professional writings"]
 tags: ["redis", "note"]
 series: ["Redis"]
