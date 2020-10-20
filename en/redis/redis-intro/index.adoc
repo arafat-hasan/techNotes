@@ -1,0 +1,14 @@
+---
+title: Redis Introduction and Installation
+author: Arafat Hasan
+date: 2020-09-01
+categories: ["professional writings"]
+tags: ["redis", "note"]
+series: ["Redis"]
+featured_image: "redis-logo.png"
+draft: false
+type: posts
+---
+
+
+include::./content/en/prowritings/redis/redis-intro/README.adoc[]

@@ -1,23 +1,9 @@
----
-title: "PostgreSQL Introduction and Installation"
-author: Arafat Hasan
-date: 2020-08-12
-categories: ["professional writings"]
-tags: ["postgresql", "note", "postgres"]
-series: ["PostgreSQL"]
-featured_image: "../images/postgres-logo.png"
-draft: false
-type: posts
----
-
-
-
-
 :Author:    Arafat Hasan
 :Email:     <opendoor.arafat[at]gmail[dot]com>
 :Date:      12 August, 2020
 :Revision:  v1.0
 :sectnums:
+:imagesdir: ./
 :toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
@@ -29,16 +15,9 @@ type: posts
 
 
 ifdef::env-github[]
-:imagesdir: ./images
-endif::[]
-ifndef::env-github[]
-:imagesdir: ../images
-endif::[]
-
-ifdef::env-github[]
 ++++
 <p align="center">
-<img align="center" width="250" height="250" alt="PostgreSQL Logo" src="./images/postgres-logo.png">
+<img align="center" width="250" height="250" alt="PostgreSQL Logo" src="postgres-logo.png">
 <p>
 <h1 align="center"> PostgreSQL Introduction and Installation </h1>
 <br>

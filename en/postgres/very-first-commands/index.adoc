@@ -1,0 +1,13 @@
+---
+title: "PostgreSQL: Very First Commands"
+author: Arafat Hasan
+date: 2020-08-12
+categories: ["professional writings"]
+tags: ["postgresql", "note", "postgres"]
+series: ["PostgreSQL"]
+featured_image: "postgres-logo.png"
+draft: false
+type: posts
+---
+
+include::./content/en/prowritings/postgres/very-first-commands/README.adoc[]
