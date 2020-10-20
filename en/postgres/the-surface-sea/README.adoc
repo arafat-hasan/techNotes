@@ -55,7 +55,7 @@ Download the data as a file named `person.sql`.
 Now we will do some tweaking in `person.sql`, according to our needs. Open this file in the preferred editor, I'm using vs code. Then make the following changes to the CREATE TABLE command at the top of the file.  Notice that we have added `id BIGSERIAL NOT NULL PRIMARY KEY`, changed `VARCHAR` sizes, and specified the `NOT NULL` fields.
 
 
-```sql
+```sql, linenums
 create table person (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	first_name VARCHAR(50) NOT NULL,
@@ -75,7 +75,7 @@ test=# \i /path/to/person.sql
 Now the script `person.sql` is executed, and there are 1000 rows in the `person` table.
 
 Our table description look like this:
-```
+```text, linenums
 test=# \d person;
                            Table "public.person"
       Column      |          Type          | Collation | Nullable | Default 
@@ -98,7 +98,7 @@ SELECT * FROM person;
 ```
 
 ~_Output_~
-```
+```text, linenums
   id  |   first_name   |      last_name      |                  email                  | gender | date_of_birth |         country_of_birth         
 ------+----------------+---------------------+-----------------------------------------+--------+---------------+----------------------------------
     1 | Ronda          | Skermer             | rskermer0@arstechnica.com               | Female | 1993-06-30    | Argentina
@@ -127,7 +127,7 @@ SELECT id, first_name, last_name FROM person;
 ```
 
 ~_Output_~
-```
+```text, linenums
   id  |   first_name   |      last_name      
 ------+----------------+---------------------
     1 | Ronda          | Skermer
@@ -160,7 +160,7 @@ SELECT * FROM person ORDER BY country_of_birth;
 ```
 
 ~_Output_~
-```
+```text, linenums
   id  |   first_name   |      last_name      |                  email                  | gender | date_of_birth |         country_of_birth         
 ------+----------------+---------------------+-----------------------------------------+--------+---------------+----------------------------------
   475 | Koren          | Burgen              |                                         | Female | 1985-09-16    | Afghanistan
@@ -185,7 +185,7 @@ SELECT * FROM person ORDER BY country_of_birth DESC;
 ```
 
 ~_Output_~
-```
+```text, linenums
   id  |   first_name   |      last_name      |                  email                  | gender | date_of_birth |         country_of_birth         
 ------+----------------+---------------------+-----------------------------------------+--------+---------------+----------------------------------
   563 | Meredeth       | Pantin              |                                         | Male   | 1971-02-22    | Zambia
@@ -211,7 +211,7 @@ SELECT * FROM person ORDER BY date_of_birth DESC;
 
 ~_Output_~
 
-```
+```text, linenums
   id  |   first_name   |      last_name      |                  email                  | gender | date_of_birth |         country_of_birth         
 ------+----------------+---------------------+-----------------------------------------+--------+---------------+----------------------------------
   307 | Penni          | Privost             |                                         | Female | 2010-08-07    | Indonesia
@@ -238,7 +238,7 @@ SELECT * FROM person ORDER BY country_of_birth, id;
 ```
 
 ~_Output_~
-```
+```text, linenums
   id  |   first_name   |      last_name      |                  email                  | gender | date_of_birth |         country_of_birth         
 ------+----------------+---------------------+-----------------------------------------+--------+---------------+----------------------------------
   223 | Collen         | Raubheim            | craubheim66@gravatar.com                | Female | 1968-01-31    | Afghanistan
@@ -259,7 +259,7 @@ SELECT DISTINCT country_of_birth FROM person ORDER BY country_of_birth;
 ```
 
 ~_Output_~
-```
+```text, linenums
          country_of_birth         
 ----------------------------------
  Afghanistan
@@ -287,7 +287,7 @@ SELECT * FROM person WHERE gender='Female';
 ```
 
 ~_Output_~
-```
+```text, linenums
  id  |   first_name   |      last_name      |                 email                 | gender | date_of_birth |     country_of_birth     
 -----+----------------+---------------------+---------------------------------------+--------+---------------+--------------------------
    1 | Ronda          | Skermer             | rskermer0@arstechnica.com             | Female | 1993-06-30    | Argentina
@@ -313,7 +313,7 @@ SELECT * FROM person WHERE date_of_birth BETWEEN '1985-02-02' AND '1986-06-04';
 ```
 
 ~_Output_~
-```
+```text, linenums
  id  | first_name |  last_name   |            email             | gender | date_of_birth |   country_of_birth    
 -----+------------+--------------+------------------------------+--------+---------------+-----------------------
   25 | Billi      | Dybbe        | bdybbeo@samsung.com          | Female | 1986-02-22    | Brazil
@@ -343,7 +343,7 @@ SELECT * FROM person WHERE email LIKE '%disqus.com';
 ```
 
 ~_Output_~
-```
+```text, linenums
  id  | first_name |  last_name   |           email            | gender | date_of_birth | country_of_birth 
 -----+------------+--------------+----------------------------+--------+---------------+------------------
   45 | Carleen    | Dzeniskevich | cdzeniskevich18@disqus.com | Female | 1985-06-18    | China
@@ -364,7 +364,7 @@ SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth;
 
 ~_Output_~
 
-```
+```text, linenums
          country_of_birth         | count 
 ----------------------------------+-------
  Bangladesh                       |     1
@@ -388,7 +388,7 @@ SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth ORDER BY
 ```
 
 ~_Output_~
-```
+```text, linenums
          country_of_birth         | count 
 ----------------------------------+-------
  Afghanistan                      |     2
@@ -412,7 +412,7 @@ SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth HAVING C
 ```
 
 ~_Output_~
-```
+```text, linenums
  country_of_birth | count 
 ------------------+-------
  China            |   180
@@ -430,7 +430,7 @@ SELECT COALESCE(email, 'Email not provided') FROM person;
 ```
 
 ~_Output_~
-```
+```text, linenums
                 coalesce                 
 -----------------------------------------
  rskermer0@arstechnica.com
@@ -460,7 +460,7 @@ Now we will download a new bunch of data to create another table called `car`. T
 Now edit the downloded file `car.sql` a bit—
 
 
-```sql
+```sql, linenums
 create table car (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	make VARCHAR(100) NOT NULL,
@@ -483,7 +483,7 @@ SELECT * FROM car LIMIT 10;
 ```
 
 ~_Output_~
-```
+```text, linenums
  id |    make    |      model       |   price   
 ----+------------+------------------+-----------
   1 | Daewoo     | Leganza          | 241058.40
@@ -512,7 +512,7 @@ SELECT MAX(price) FROM car;
 ```
 
 ~_Output_~
-```
+```text, linenums
     max    
 -----------
  299959.83
@@ -525,7 +525,7 @@ SELECT make, MAX(price) FROM car GROUP BY make LIMIT 5;
 ```
 
 ~_Output_~
-```
+```text, linenums
    make   |    max    
 ----------+-----------
  Ford     | 290993.39
@@ -545,7 +545,7 @@ SELECT MIN(price) FROM car;
 ```
 
 ~_Output_~
-```
+```text, linenums
    min    
 ----------
  30348.16
@@ -558,7 +558,7 @@ SELECT make, MIN(price) FROM car GROUP BY make LIMIT 5;
 ```
 
 ~_Output_~
-```
+```text, linenums
    make   |    min    
 ----------+-----------
  Ford     |  31021.48
@@ -578,7 +578,7 @@ SELECT AVG(price) FROM car;
 ```
 
 ~_Output_~
-```
+```text, linenums
          avg         
 ---------------------
  164735.601300000000
@@ -591,7 +591,7 @@ SELECT make, AVG(price) FROM car GROUP BY make LIMIT 5;
 ```
 
 ~_Output_~
-```
+```text, linenums
    make   |         avg         
 ----------+---------------------
  Ford     | 171967.729473684211
@@ -612,7 +612,7 @@ SELECT ROUND(AVG(price)) FROM car;
 ```
 
 ~_Output_~
-```
+```text, linenums
  round  
 --------
  164736
@@ -625,7 +625,7 @@ SELECT make, ROUND(AVG(price)) FROM car GROUP BY make LIMIT 5;
 ```
 
 ~_Output_~
-```
+```text, linenums
    make   | round  
 ----------+--------
  Ford     | 171968
@@ -647,7 +647,7 @@ SELECT COUNT(make) FROM car;
 ```
 
 ~_Output_~
-```
+```text, linenums
  count 
 -------
   1000
@@ -663,7 +663,7 @@ SELECT SUM(price) FROM car;
 ```
 
 ~_Output_~
-```
+```text, linenums
      sum      
 --------------
  164735601.30
@@ -676,7 +676,7 @@ SELECT make, SUM(price) FROM car GROUP BY make LIMIT 5;
 ```
 
 ~_Output_~
-```
+```text, linenums
    make   |     sum     
 ----------+-------------
  Ford     | 16336934.30
@@ -695,7 +695,7 @@ SELECT 10 + 2;
 ```
 
 ~_Output_~
-```
+```text, linenums
  ?column? 
 ----------
        12
@@ -708,7 +708,7 @@ SELECT 10 / 2;
 ```
 
 ~_Output_~
-```
+```text, linenums
  ?column? 
 ----------
         5
@@ -721,7 +721,7 @@ SELECT 10^2;
 ```
 
 ~_Output_~
-```
+```text, linenums
  ?column? 
 ----------
       100
@@ -737,7 +737,7 @@ SELECT id, make, model, price, ROUND(price * 0.10, 2), ROUND(price - (price * 0.
 ```
 
 ~_Output_~
-```
+```text, linenums
   id  |     make      |        model         |   price   |  round   |   round   
 ------+---------------+----------------------+-----------+----------+-----------
     1 | Daewoo        | Leganza              | 241058.40 | 24105.84 | 216952.56
@@ -763,7 +763,7 @@ SQL aliases are used to give a table, or a column in a table, a temporary name. 
 
 
 ~_Command_~
-```sql
+```sql, linenums
 SELECT id, make, model, price AS original_price,
  ROUND(price * 0.10, 2) AS ten_percent_discount,
  ROUND(price - (price * 0.10), 2) AS discounted_price
@@ -771,7 +771,7 @@ SELECT id, make, model, price AS original_price,
 ```
 
 ~_Output_~
-```
+```text, linenums
   id  |     make      |        model         | original_price | ten_percent_discount | discounted_price 
 ------+---------------+----------------------+----------------+----------------------+------------------
     1 | Daewoo        | Leganza              |      241058.40 |             24105.84 |        216952.56
@@ -791,7 +791,7 @@ SELECT id, make, model, price AS original_price,
 === NULLIF
 The NULLIF() function returns NULL if two expressions are equal. Otherwise, it returns the first expression.
 
-```
+```text, linenums
 test=# SELECT NULLIF(2, 1);
  nullif 
 --------
@@ -817,7 +817,7 @@ test=# SELECT NULLIF(0, 0);
 === DATE
 PostgreSQL provides several functions that return values related to the current date and time. These SQL-standard functions all return values based on the start time of the current transaction:
 
-```sql
+```sql, linenums
 CURRENT_DATE
 CURRENT_TIME
 CURRENT_TIMESTAMP
@@ -826,7 +826,7 @@ CURRENT_TIME(precision)
 ```
 
 
-```
+```text, linenums
 SELECT CURRENT_TIME;
 Result: 14:39:53.662522-05
 
@@ -840,7 +840,7 @@ Result: 2001-12-23 14:39:53.662522-05
 
 PostgreSQL also provides functions that return the start time of the current statement, as well as the actual current time at the instant the function is called. The complete list of non-SQL-standard time functions is:
 
-```sql
+```sql, linenums
 transaction_timestamp()
 statement_timestamp()
 clock_timestamp()
@@ -851,7 +851,7 @@ now()
 
 ==== NOW
 
-```
+```text, linenums
 test=# SELECT NOW();
              now              
 ------------------------------
@@ -875,7 +875,7 @@ test=# SELECT NOW()::TIME;
 ==== Addition and Subtraction of Date
 ===== INTERVAL
 
-```
+```text, linenums
 test=# SELECT NOW() - INTERVAL '1 YEAR';
            ?column?            
 -------------------------------
@@ -908,12 +908,12 @@ test=# SELECT NOW() + INTERVAL '40 DAYS';
 ==== EXTRACT
 The extract function retrieves subfields such as year or hour from date/time values. *source* must be a value expression of type `timestamp`, `time`, or `interval`. (Expressions of type date are cast to `timestamp` and can, therefore, be used as well.) *field* is an identifier or string that selects what field to extract from the source value. The extract function returns values of type double precision. 
 
-```
+```sql
 EXTRACT(field FROM source)
 ```
 
 
-```
+```text, linenums
 test=# SELECT NOW();
              now              
 ------------------------------
@@ -944,11 +944,11 @@ test=# SELECT EXTRACT(CENTURY FROM NOW());
 
 ==== AGE
 
-```
+```sql
 age(timestamp, timestamp)
 ```
 or
-```
+```sql
 age(timestamp)
 ```
 The return type of both is an interval.
@@ -959,7 +959,7 @@ SELECT first_name, last_name, gender, date_of_birth, AGE(NOW(), date_of_birth) A
 ```
 
 ~_Output_~
-```
+```text, linenums
    first_name   |      last_name      | gender | date_of_birth |                   age                    
 ----------------+---------------------+--------+---------------+------------------------------------------
  Ronda          | Skermer             | Female | 1993-06-30    | 27 years 1 mon 19 days 23:56:04.414053

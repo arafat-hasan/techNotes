@@ -10,4 +10,4 @@ draft: false
 type: posts
 ---
 
-include::./content/en/prowritings/postgres/the-sallow-sea/README.adoc[]
+include::./content/en/prowritings/postgres/intro-installation/README.adoc[]

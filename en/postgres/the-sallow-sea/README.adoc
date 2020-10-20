@@ -40,13 +40,11 @@ The `PRIMARY KEY` of a table is a combination of `NOT NULL` and `UNIQUE` constra
 Here we will see how to delete and add a primary key.
 
 
-At first, we check the table description, and we have found that the `id` column is a `PRIMARY KEY`.
+At first, we check the table description, and we have found that the `id` column is a `PRIMARY KEY`. Use command `\d person;`.
 
-```
-\d person;
-```
 
-```
+
+```text, linenums
                                          Table "public.person"
       Column      |          Type          | Collation | Nullable |              Default               
 ------------------+------------------------+-----------+----------+------------------------------------
@@ -64,7 +62,7 @@ Indexes:
 
 Now we will try to add a duplicate value to the table.
 
-```
+```text, linenums
 test=# SELECT * FROM person WHERE id=1;
  id | first_name | last_name |           email           | gender | date_of_birth | country_of_birth 
 ----+------------+-----------+---------------------------+--------+---------------+------------------
@@ -79,7 +77,7 @@ DETAIL:  Key (id)=(1) already exists.
 
 Insertion value is failed as the `id` column is primary, and it says _duplicate key value violates unique constraint_. Now we will drop the primary key constraint of the `id` column and will again try to insert duplicate data into the table.
 
-```
+```text, linenums
 test=# ALTER TABLE person DROP CONSTRAINT person_pkey;
 ALTER TABLE
 test=# \d person;
@@ -108,7 +106,7 @@ Here, as we can see that, after dropping the primary key constrains, we can inse
 
 Now we will try to add primary key constraint in the `id` column.	
 
-```
+```text, linenums
 test=# ALTER TABLE person ADD PRIMARY KEY(id);
 ERROR:  could not create unique index "person_pkey"
 DETAIL:  Key (id)=(1) is duplicated.
@@ -116,7 +114,7 @@ DETAIL:  Key (id)=(1) is duplicated.
 
 But we had failed, as there is two-row containing the same id. Now delete one of the duplicate ids and again try to add a primary key.
 
-```
+```text, linenums
 test=# DELETE FROM person WHERE id=1;
 DELETE 2
 test=# SELECT * FROM person WHERE id=1;
@@ -167,7 +165,7 @@ When a `UNIQUE` constraint is adding, an index on a column or group of columns c
 
 We are going to add a `UNIQUE CONSTRAINT` in the email field, and after that, we will delete the constraint of the field.
 
-```
+```text, linenums
 test=# ALTER TABLE person ADD CONSTRAINT unique_email_addr UNIQUE(email);
 ALTER TABLE
 test=# \d person;
@@ -206,7 +204,7 @@ Indexes:
 
 Again we will add unique constraints in the email field, but without mentioning the name of our constraint, the name of the constraint will be set by Postgres itself automatically.
 
-```
+```text, linenums
 test=# ALTER TABLE person ADD UNIQUE(email);
 ALTER TABLE
 test=# \d person;
@@ -234,7 +232,7 @@ PostgreSQL provides the `CHECK` constraint, which allows the user to define a co
 The `CHECK` constraint in PostgreSQL can be defined as a separate name.
 
 
-```
+```text, linenums
 test=# ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male');
 ALTER TABLE
 test=# \d person;
@@ -259,13 +257,13 @@ Check constraints:
 === DELETE
 Following is the usage of the PostgreSQL `DELETE` command to delete data of a PostgreSQL table.
 
-```
+```sql, linenums
 DELETE FROM table_name ;
 ```
 
 Where `table_name` is the associated table, executing this command will delete all the rows of the associated table.
 
-```
+```sql, linenums
 DELETE FROM table_name WHERE condition;
 ```
 
@@ -274,7 +272,7 @@ If we don't want to delete all of the rows of a table, but some specific rows wh
 
 First, try to delete all records from a table.
 
-```
+```text, linenums
 test=# DELETE FROM person;
 DELETE 1000
 test=# SELECT * FROM person;
@@ -286,7 +284,7 @@ test=# SELECT * FROM person;
 
 There is no record in the `person` table now. For our learning purpose, retrieve data from the SQL file for the table again.
 
-```
+```text, linenums
 test=# \i /path/to/person.sql 
 psql:/path/to/person.sql:9: ERROR:  relation "person" already exists
 INSERT 0 1
@@ -326,7 +324,7 @@ test=# SELECT * FROM person LIMIT 10;
 
 Now try to delete a specific row or rows with the matching condition.
 
-```
+```text, linenums
 test=# DELETE FROM person WHERE id = 1002;
 DELETE 1
 test=# SELECT * FROM person LIMIT 10;
@@ -355,7 +353,7 @@ test=# SELECT * FROM person WHERE gender='Female' AND country_of_birth='China';
 
 For our learning purpose, now we will delete every record from the person table and restore it from our SQL file.
 
-```
+```text, linenums
 test=# DELETE FROM person;
 DELETE 905
 test=# \i /path/to/person.sql
@@ -368,7 +366,7 @@ INSERT 0 1
 === UPDATE
 UPDATE command is used to modify existing data of a table. 
 
-```
+```text, linenums
 test=# SELECT * FROM person;
   id  |   first_name   |      last_name      |                  email                  | gender | date_of_birth |         country_of_birth         
 ------+----------------+---------------------+-----------------------------------------+--------+---------------+----------------------------------
@@ -408,7 +406,7 @@ This means do nothing if the row already exists in the table. It handles duplica
 First, we try to enter the duplicate record.
 
 ~_Command_~
-```sql
+```sql, linenums
 INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth)
 VALUES (2002, 'Ronda', 'Dante', 'Male', 'dante@hotmaill.com', DATE '1980-03-12', 'Sri Lanka');
 ```
@@ -416,7 +414,7 @@ VALUES (2002, 'Ronda', 'Dante', 'Male', 'dante@hotmaill.com', DATE '1980-03-12',
 As expected, an ERROR message is thrown.
 
 ~_Output_~
-```
+```text, linenums
 ERROR:  duplicate key value violates unique constraint "person_pkey"
 DETAIL:  Key (id)=(2002) already exists.
 ```
@@ -424,7 +422,7 @@ DETAIL:  Key (id)=(2002) already exists.
 Now we try to enter the duplicate record with `ON CONFLICT(id) DO NOTHING` and handle the error.
 
 ~_Command_~
-```sql
+```sql, linenums
 INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth)
 VALUES (2002, 'Ronda', 'Dante', 'Male', 'dante@hotmaill.com', DATE '1980-03-12', 'Sri Lanka')
 ON CONFLICT(id) DO NOTHING;
@@ -433,7 +431,7 @@ ON CONFLICT(id) DO NOTHING;
 The output message is saying `0 0`, which means no insert operation is held.
 
 ~_Output_~
-```
+```text, linenums
 INSERT 0 0
 ```
 
@@ -442,7 +440,7 @@ This update some fields in the table.
 
 We will update this record in a way that conflicts with it.
 
-```
+```text, linenums
 test=# SELECT * FROM person WHERE id = 2002;
   id  | first_name | last_name |             email         | gender | date_of_birth | country_of_birth 
 ------+------------+-----------+---------------------------+--------+---------------+------------------
@@ -454,7 +452,7 @@ test=# SELECT * FROM person WHERE id = 2002;
 Here `EXCLUDED` refers to the new conflicted record which is trying to be inserted.
 
 ~_Command_~
-```sql
+```sql, linenums
 INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth)
 VALUES (2002, 'Rudi', 'Donte', 'Male', 'donte@hotmaill.com', DATE '1980-03-12', 'Sri Lanka')
 ON CONFLICT(id) DO UPDATE SET first_name=EXCLUDED.first_name, last_name=EXCLUDED.last_name, email=EXCLUDED.email;
@@ -467,7 +465,7 @@ INSERT 0 1
 
 Despite the conflict, the updated record is:
 
-```
+```text, linenums
 test=# SELECT * FROM person WHERE id = 2002;
   id  | first_name | last_name |       email        | gender | date_of_birth | country_of_birth 
 ------+------------+-----------+--------------------+--------+---------------+------------------
@@ -484,7 +482,7 @@ image:foreign-primary-relations.png[Forign Key, Primary Key and Relations]
 Adding relations between tables
 We will now drop the previous tables and create new ones with relations.
 
-```
+```text, linenums
 test=# \dt
            List of relations
  Schema |  Name  | Type  |    Owner     
@@ -532,7 +530,7 @@ test=# \dt
 
 Our new SQL file, which is named `car-person.sql` is in bellow:
 
-```sql
+```sql, linenums
 CREATE TABLE car (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	make VARCHAR(100) NOT NULL,
@@ -579,7 +577,7 @@ INSERT INTO person (first_name, last_name, email, gender, date_of_birth, country
 
 Let's take a look at the two new tables to see what's inside.
 
-```
+```text, linenums
 test=# SELECT * FROM person;
  id | first_name |   last_name   |             email              | gender | date_of_birth | country_of_birth | car_id 
 ----+------------+---------------+--------------------------------+--------+---------------+------------------+--------
@@ -614,7 +612,7 @@ As expected, there is no value in the `car_id` column in `person` as we did not 
 
 As can be seen below, we have set the foreign key correctly, and it has a UNIQUE constraint and `car_id` referencing to `car.id`.
 
-```
+```text, linenums
 test=# \d person;
                                          Table "public.person"
       Column      |          Type          | Collation | Nullable |              Default               
@@ -639,7 +637,7 @@ Foreign-key constraints:
 
 Let's assign the Mitsubishi, which ID is 2 from the car table to Hamid Abbett of the person table which ID is 1.
 
-```
+```text, linenums
 test=# UPDATE person SET car_id = 2 WHERE id = 1;
 UPDATE 1
 test=# SELECT * FROM person;
@@ -661,13 +659,13 @@ test=# SELECT * FROM person;
 
 Let's also add a car to Francis Nickerson.
 
-```
+```sql, linenums
 UPDATE person SET car_id = 1 WHERE id = 2;
 ```
 
 Let's try to give one car to two people and see what happens.
 
-```
+```text, linenums
 test=# UPDATE person SET car_id = 1 WHERE id = 3;
 ERROR:  duplicate key value violates unique constraint "person_car_id_key"
 DETAIL:  Key (car_id)=(1) already exists.
@@ -675,7 +673,7 @@ DETAIL:  Key (car_id)=(1) already exists.
 
 Okay, now assign other cars to specific persons. This is the final table.
 
-```
+```text, linenums
  id | first_name |   last_name   |             email              | gender | date_of_birth | country_of_birth | car_id 
 ----+------------+---------------+--------------------------------+--------+---------------+------------------+--------
   5 | Reilly     | Amesbury      | ramesbury5@businessinsider.com | Male   | 1990-12-31    | China            |       
@@ -695,7 +693,7 @@ Okay, now assign other cars to specific persons. This is the final table.
 ==== Delete Record with Foreign Keys
 
 
-```
+```text, linenums
 test=# DELETE FROM car WHERE id = 7;
 ERROR:  update or delete on table "car" violates foreign key constraint "person_car_id_fkey" on table "person"
 DETAIL:  Key (id)=(7) is still referenced from table "person".
@@ -733,7 +731,7 @@ The INNER JOIN keyword selects records that have matching values in both tables.
 
 The INNER JOIN creates a new result table by combining column values of two tables (table1 and table2) based upon the join-predicate. The query compares each row of table1 with each row of table2 to find all pairs of rows which satisfy the join-predicate. When the join-predicate is satisfied, column values for each matched pair of rows of A and B are combined into a result row.
 
-```sql
+```sql, linenums
 SELECT column_name(s)
 FROM table1
 INNER JOIN table2
@@ -746,13 +744,13 @@ image:inner-join.gif[INNER JOIN]
 Now let's join our tables based on foreign keys.
 
 ~_Command_~
-```sql
+```sql, linenums
 SELECT * FROM person
 JOIN car ON person.car_id = car.id;
 ```
 
 ~_Output_~
-```
+```text, linenums
  id | first_name | last_name |         email          | gender | date_of_birth | country_of_birth | car_id | id |    make    |      model       |   price   
 ----+------------+-----------+------------------------+--------+---------------+------------------+--------+----+------------+------------------+-----------
   2 | Francis    | Nickerson | fnickerson2@mac.com    | Male   | 1998-03-16    | Portugal         |      1 |  1 | Daewoo     | Leganza          | 241058.40
@@ -767,14 +765,14 @@ JOIN car ON person.car_id = car.id;
 ```
 
 ~_Command_~
-```sql
+```sql, linenums
 SELECT person.first_name, person.last_name, car.make, car.model, car.price
 FROM person
 JOIN car ON person.car_id = car.id;
 ```
 
 ~_Output_~
-```
+```text, linenums
  first_name | last_name |    make    |      model       |   price   
 ------------+-----------+------------+------------------+-----------
  Francis    | Nickerson | Daewoo     | Leganza          | 241058.40
@@ -795,7 +793,7 @@ The LEFT JOIN keyword returns all records from the left table (table1), and the 
 image:left-join.gif[LEFT JOIN]
 
 ~_Command_~
-```sql
+```sql, linenums
 SELECT person.first_name, person.last_name, car.make, car.model, car.price
 FROM person
 LEFT JOIN car ON person.car_id = car.id;
@@ -803,7 +801,7 @@ LEFT JOIN car ON person.car_id = car.id;
 ```
 
 ~_Output_~
-```
+```text, linenums
  first_name |   last_name   |    make    |      model       |   price   
 ------------+---------------+------------+------------------+-----------
  Francis    | Nickerson     | Daewoo     | Leganza          | 241058.40
@@ -847,7 +845,7 @@ By typing `\?` and check the help. In the Input/Output section, it says that `\c
 
 We will save this query to a CSV file.
 
-```
+```text, linenums
 test=# SELECT person.first_name, person.last_name, car.make, car.model, car.price
 FROM person
 LEFT JOIN car ON person.car_id = car.id;
@@ -868,7 +866,7 @@ LEFT JOIN car ON person.car_id = car.id;
 
 
 ~_Command_~
-```sql
+```sql, linenums
 \copy (SELECT person.first_name, person.last_name, car.make, car.model, car.price FROM person LEFT JOIN car ON car.id = person.car_id) TO '/home/arafat_hasan/Downloads/results.csv' DELIMITER ',' CSV HEADER
 
 ```
@@ -882,7 +880,7 @@ The query is stored in the CSV file.
 
 
 === Serials and Sequences
-```
+```text, linenums
 test=# \d person;
                                          Table "public.person"
       Column      |          Type          | Collation | Nullable |              Default               
@@ -943,7 +941,7 @@ Simply extensions are functions that can add extra functionality to the database
 
 List of available extensions
 
-```
+```text, linenums
 test=# SELECT * FROM pg_available_extensions;
   name   | default_version | installed_version |           comment            
 ---------+-----------------+-------------------+------------------------------
@@ -964,22 +962,22 @@ ____
 
 
 We have to add the uuid-ossp extension:
-```
+```text, linenums
 CREATE EXTENSION "uuid-ossp";
 ```
 
 List of a available functions:
 
-```
+```text, linenums
 \df
 ```
 
 Now we have to invoke the function:
-```
+```text, linenums
 SELECT uuid_generate_v4();
 ```
 
-```
+```text, linenums
 ANLONGUUID
 ```
 
@@ -988,7 +986,7 @@ ANLONGUUID
 Drop `person` and `car` table and create another ones as below.
 
 
-```sql
+```sql, linenums
 CREATE TABLE car (
 	car_uid UUID NOT NULL PRIMARY KEY,
 	make VARCHAR(100) NOT NULL,

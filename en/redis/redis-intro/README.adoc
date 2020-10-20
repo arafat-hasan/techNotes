@@ -47,19 +47,7 @@ A key-value pair is a set or pair of two linked items. Consider the following:
 
 _car = Mercedes_
 
-In this case, car is the key and Mercedes is the value. In a Redis database, this information can be  written using the syntax:
-
-
-```text, linenums
-SET  "key1" "value1"
-```
-
-Our example will translate to:
-
-
-```text, linenums
-SET "car" "Mercedes"
-```
+In this case, car is the key and Mercedes is the value. In a Redis database, this information can be  written using the syntax: `SET  "key1" "value1"`. Our example will translate to: `SET "car" "Mercedes"`.
 
 === Benefits of using Redis
 
@@ -81,7 +69,7 @@ SET "car" "Mercedes"
 Login to your CentOS 8 / RHEL 8 system and update system packages and repositories using the command:
 
 
-```text, linenums
+```
 $ sudo dnf update -y
 ```
 
@@ -90,7 +78,7 @@ $ sudo dnf update -y
 Redis version 5.0.x is now included in CentOS 8 AppStream repository and installing it is a walk in the park. Simply run the command:
 
 
-```text, linenums
+```
 $ sudo dnf install redis -y
 ```
 
@@ -111,7 +99,7 @@ From the output , it is clear that we have installed Redis version 5.0.3. To ret
 
 
 
-```text, linenums
+```
 $ rpm -qi redis
 ```
 
@@ -121,7 +109,7 @@ $ rpm -qi redis
 To start Redis:
 
 
-```text, linenums
+```
 $ sudo systemctl start redis 
 ```
 
@@ -131,7 +119,7 @@ $ sudo systemctl start redis
 If you want to automatically start Redis in each system boot, you need to enable Redis:
 
 
-```text, linenums
+```
 $ sudo systemctl enable redis
 ```
 
@@ -140,7 +128,7 @@ $ sudo systemctl enable redis
 To see status:
 
 
-```text, linenums
+```
 $ sudo systemctl status redis
 ```
 
@@ -149,7 +137,7 @@ $ sudo systemctl status redis
 By default, Redis runs on port 6379. This can be confirmed by running the `netstat` command:
 
 
-```text, linenums
+```
 $ sudo netstat -pnltu | grep redis
 ```
 
@@ -163,28 +151,28 @@ The default installation only allows connections from localhost or Redis server 
 Access the configuration file as shown:
 
 
-```text, linenums
+```
 $ sudo vim /etc/redis.conf
 ```
 
 Locate the `bind` parameter and replace `127.0.0.1` with `0.0.0.0`
 
 
-```text, linenums
+```
 bind 0.0.0.0
 ```
 
 Save and close the configuration file. For the changes to come into effect, restart Redis.
 
 
-```text, linenums
+```
 $ sudo systemctl restart redis
 ```
 
 To log in to Redis shell, run the command:
 
 
-```text, linenums
+```
 $ redis-cli
 ```
 
@@ -192,7 +180,7 @@ $ redis-cli
 Try to ping redis server. You should get a ‘PONG’ response as shown.
 
 
-```text, linenums
+```
 [arafat@server ~]$ redis-cli
 127.0.0.1:6379> ping
 PONG
@@ -227,21 +215,21 @@ Locate and uncomment the `requirepass` parameter and specify a strong password.
 Restart Redis and head back to the server.
 
 
-```text, linenums
+```
 $ sudo systemctl restart redis
 ```
 
 If you attempt to run any command before authenticating, the error shown below will be displayed
 
 
-```text, linenums
+```
 [arafat@server ~]$ redis-cli
 127.0.0.1:6379> ping
 (error) NOAUTH Authentication required.
 127.0.0.1:6379>
 ```
 To authenticate, type ‘auth’ followed by the password set.
-```text, linenums
+```
 auth 'PASSWORD'
 ```
 
@@ -269,17 +257,17 @@ $ sudo firewall-cmd --add-port=6379/tcp --permanent
 $ sudo firewall-cmd --reload
 ```
 To access Redis remotely, use the syntax below.
-```text, linenums
+```
 $ redis-cli -h REDIS_IP_ADDRESS
 ```
 Next authenticate and hit ‘ENTER’
 
 The IP address of our Redis server is 192.168.1.5 The command from another client PC will be
-```text, linenums
+```
 $ redis-cli -h 192.168.1.5
 ```
 Next, provide the password and hit ‘ENTER’
-```text, linenums
+```
 auth 'PASSWORD'
 ```
 
@@ -303,7 +291,7 @@ Some of the command options you can use with Redis include
 Examples:
 
 To confirm the average no. of requests that your Redis server can handle run the command:
-```text, linenums
+```
 $ redis-benchmark -q
 ```
 
