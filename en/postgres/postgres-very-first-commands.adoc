@@ -5,7 +5,7 @@ date: 2020-08-12
 categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
-featured_image: "./images/postgres-logo.png"
+featured_image: "../images/postgres-logo.png"
 draft: false
 type: posts
 ---
@@ -31,7 +31,7 @@ ifdef::env-github[]
 :imagesdir: ./images
 endif::[]
 ifndef::env-github[]
-:imagesdir: ./images
+:imagesdir: ../images
 endif::[]
 
 ifdef::env-github[]
