@@ -5,7 +5,7 @@ date: 2020-09-01
 categories: ["professional writings"]
 tags: ["redis", "note"]
 series: ["Redis"]
-featured_image: "./../../images/redis-logo.png"
+featured_image: "./images/redis-logo.png"
 draft: false
 type: posts
 ---
@@ -18,7 +18,7 @@ type: posts
 :Date:      01 Septerber, 2020
 :Revision:  v1.0
 :sectnums:
-:imagesdir: ./../../images
+:imagesdir: ./images
 :toc: macro
 :toc-title: Table of Content 
 :toclevels: 3
@@ -33,7 +33,7 @@ type: posts
 ifdef::env-github[]
 ++++
 <p align="center">
-<img align="center", width="600", height="400", alt="Redis Logo" src="../images/redis-logo.png">
+<img align="center", width="600", height="400", alt="Redis Logo" src="./images/redis-logo.png">
 </p>
 ++++
 endif::[]
