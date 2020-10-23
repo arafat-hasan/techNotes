@@ -39,7 +39,7 @@ _This writing is actually a draft note made for me so that I myself don’t forg
 === Mockaroo Data Generator
 We will use a site named https://mockaroo.com/[Mockaroo^] to insert a lot of data into our table for our learning convenience. Mockaroo is an online realist test data generator. We will download a bunch of dummy but realistic data in SQL format and execute the SQL file in the terminal.
 
-image:mockaroo.png[Generate data using Mockaroo]
+image:mockaroo.png["Generate data using Mockaroo", 800]
 
 Notes:
 
