@@ -5,9 +5,9 @@ date: 2020-09-02
 categories: ["professional writings"]
 tags: ["redis", "note"]
 series: ["Redis"]
-featured_image: "redis-logo.png"
+image: "en/prowritings/redis/redis-hello-world/redis-logo.png"
 draft: false
-type: posts
+type: post
 ---
 
 include::./content/en/prowritings/redis/redis-hello-world/README.adoc[]

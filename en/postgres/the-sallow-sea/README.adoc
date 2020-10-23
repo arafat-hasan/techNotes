@@ -476,7 +476,7 @@ test=# SELECT * FROM person WHERE id = 2002;
 
 
 === Foreign Keys, Joins and Relationships
-image:foreign-primary-relations.png[Forign Key, Primary Key and Relations]
+image:foreign-primary-relations.png["Forign Key, Primary Key and Relations", 600]
 
 
 Adding relations between tables

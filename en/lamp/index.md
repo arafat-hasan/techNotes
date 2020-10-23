@@ -5,7 +5,8 @@ categories: ["professional writings"]
 tags: ["note", "lamp", "installation", "centos"]
 series: []
 draft: false
-type: posts
+image: "en/prowritings/lamp/lamp.png"
+type: post
 ---
 
 

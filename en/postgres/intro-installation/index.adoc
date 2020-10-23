@@ -5,9 +5,9 @@ date: 2020-08-10
 categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
-featured_image: "postgres-logo.png"
+image: "en/prowritings/postgres/intro-installation/postgres-logo.png"
 draft: false
-type: posts
+type: post
 ---
 
 include::./content/en/prowritings/postgres/intro-installation/README.adoc[]
