@@ -5,7 +5,7 @@ date: 2020-08-12
 categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
-image: "en/prowritings/postgres/the-surface-sea/postgres-logo.png"
+image: "en/post/postgres-surface-sea/postgres-logo.png"
 url: "post/postgres-surface-sea"
 draft: false
 type: post
