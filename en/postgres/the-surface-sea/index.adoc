@@ -6,6 +6,7 @@ categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
 image: "en/prowritings/postgres/the-surface-sea/postgres-logo.png"
+url: "post/postgres-surface-sea"
 draft: false
 type: post
 ---

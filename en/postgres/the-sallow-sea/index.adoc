@@ -6,6 +6,7 @@ categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
 image: "en/prowritings/postgres/the-sallow-sea/postgres-logo.png"
+url: "post/postgres-sallow-sea"
 draft: false
 type: "featured"
 ---

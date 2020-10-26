@@ -6,6 +6,7 @@ categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
 image: "en/prowritings/postgres/very-first-commands/postgres-logo.png"
+url: "post/postgres-very-first-commands"
 draft: false
 type: post
 ---

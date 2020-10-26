@@ -6,6 +6,7 @@ categories: ["professional writings"]
 tags: ["redis", "note"]
 series: ["Redis"]
 image: "en/prowritings/redis/redis-hello-world/redis-logo.png"
+url: "post/redis-hello-world"
 draft: false
 type: post
 ---

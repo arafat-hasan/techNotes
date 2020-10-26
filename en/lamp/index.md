@@ -6,6 +6,7 @@ tags: ["note", "lamp", "installation", "centos"]
 series: []
 draft: false
 image: "en/prowritings/lamp/lamp.png"
+url: "post/lamp-config"
 type: post
 ---
 

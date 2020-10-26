@@ -6,6 +6,7 @@ categories: ["professional writings"]
 tags: ["postgresql", "note", "postgres"]
 series: ["PostgreSQL"]
 image: "en/prowritings/postgres/intro-installation/postgres-logo.png"
+url: "post/postgres-intro"
 draft: false
 type: post
 ---
