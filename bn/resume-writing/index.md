@@ -2,7 +2,7 @@
 title: রেজুমে লেখার কিছু কৌশল
 author: আরাফাত হাসান
 date: 2019-11-07
-categories: ["পেশাগত"]
+categories: ["পেশাগত", "প্রবন্ধ"]
 tags: ["রেজুমে", "সিভি", "জীবনবৃত্তান্ত", "চাকরি"]
 type: "post"
 image: "bn/post/resume-writing/resume-calligraphy-pen.jpg"
