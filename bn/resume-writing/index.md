@@ -4,7 +4,7 @@ author: আরাফাত হাসান
 date: 2019-11-07
 categories: ["পেশাগত", "প্রবন্ধ"]
 tags: ["রেজুমে", "সিভি", "জীবনবৃত্তান্ত", "চাকরি"]
-type: "post"
+type: "featured"
 image: "bn/post/resume-writing/resume-calligraphy-pen.jpg"
 url: "post/resume-writing"
 draft: false
